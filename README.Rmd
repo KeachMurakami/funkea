@@ -1,0 +1,60 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# funkea
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+```{r}
+library(funkea)
+```
+
+## label
+
+- `gglabel`にラベルに頻用する単位をまとめる
+    - text引数で単位以外の部分を記述
+    - expression記法する場合は`~`スタート
+    - `see_unicode()`で主要なユニコードを確認
+
+```{r labels}
+see_unicode()
+qplot(1:5) + theme_bw() +
+  labs(x = gglabel("\u2206 Temperature", type = "degC"),
+       y = gglabel("PPFD", type = "muflux"),
+       subtitle = gglabel(~CO[2], type = "muconc"))
+```
+
+## zero filling
+
+- 整数部桁揃え
+    - 内部的には`str_pad`
+
+```{r lead_zero}
+x <- c(1, 20, 100, NA)
+lead_zero(x, 1)
+lead_zero(x, 2)
+lead_zero(x, 3)
+```
+
+- 小数点以下揃え
+    - 内部的には`sprintf`
+
+```{r tail_zero}
+y <- c(0.1, 0.001, 0.09, NA)
+tail_zero(y, 1)
+tail_zero(y, 2)
+tail_zero(y, 3)
+```
