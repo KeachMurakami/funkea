@@ -2,10 +2,11 @@
 #'
 #' @param x a vector of integer
 #' @param digits number digits after zero padding
+#' @param fill chracter for padding
 #' @export
 lead_zero <-
-  function(x, digits = 2){
-    x <- stringr::str_pad(string = x, width = digits, pad = "0", side = "left")
+  function(x, digits = 2, fill = "0"){
+    x <- stringr::str_pad(string = x, width = digits, pad = fill, side = "left")
     return(x)
   }
 

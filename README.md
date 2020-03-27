@@ -11,12 +11,38 @@
 library(funkea)
 ```
 
-## label
+## ggplot theme
+
+``` r
+p <-
+  mtcars %>%
+  mutate(am = if_else(am == 0, "オートマティック", "マニュアル")) %>%
+  ggplot(aes(hp, mpg, col = cyl)) +
+  theme_grey() +
+  geom_point() +
+  facet_wrap(~ am)
+
+p + 
+  legend_topleft()
+```
+
+<img src="man/figures/README-theme-1.png" width="100%" />
+
+``` r
+
+p +
+  theme_funkea() +
+  legend_topleft() # = p + theme_bw() + inwart_tick() + transparent + jpn
+```
+
+<img src="man/figures/README-theme-2.png" width="100%" />
+
+## ggplot label
 
   - `gglabel`にラベルに頻用する単位をまとめる
       - text引数で単位以外の部分を記述
       - expression記法する場合は`~`スタート
-      - `see_unicode()`で主要なユニコードを確認
+      - `see_unicode()`で主要なunicodeを確認
 
 <!-- end list -->
 

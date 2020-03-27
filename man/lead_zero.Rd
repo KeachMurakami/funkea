@@ -4,12 +4,14 @@
 \alias{lead_zero}
 \title{Add leading zero}
 \usage{
-lead_zero(x, digits = 2)
+lead_zero(x, digits = 2, fill = "0")
 }
 \arguments{
 \item{x}{a vector of integer}
 
 \item{digits}{number digits after zero padding}
+
+\item{fill}{chracter for padding}
 }
 \description{
 Add leading zero

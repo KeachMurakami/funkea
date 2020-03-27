@@ -4,7 +4,7 @@
 \alias{see_unicode}
 \title{Plot unicodes}
 \usage{
-see_unicode()
+see_unicode(nrow = 6)
 }
 \description{
 Plot unicodes
