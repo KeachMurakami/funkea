@@ -4,7 +4,7 @@
 \alias{theme_funkea}
 \title{ggplot theme}
 \usage{
-theme_funkea(size = 11, tick_length = 2)
+theme_funkea(size = 11, tick_length = 2, use_japanese = TRUE)
 }
 \description{
 ggplot theme

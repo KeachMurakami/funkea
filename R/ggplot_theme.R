@@ -75,12 +75,20 @@ jpn <-
 #'
 #' @export
 theme_funkea <-
-  function(size = 11, tick_length = 2){
-    list(
-      theme_bw(base_size = size),
-      inward_tick(length = tick_length),
-      transparent,
-      jpn
-    )
+  function(size = 11, tick_length = 2, use_japanese = TRUE){
+    if(use_japanese){
+      list(
+        theme_bw(base_size = size),
+        inward_tick(length = tick_length),
+        transparent,
+        jpn
+      )
+    } else {
+      list(
+        theme_bw(base_size = size),
+        inward_tick(length = tick_length),
+        transparent
+      )
+    }
   }
 
