@@ -1,13 +1,13 @@
 Package: funkea
 Title: functions and utilities for me
-Version: 0.0.1.0000
+Version: 0.0.1.0001
 Authors@R: 
     person(given = "Keach",
            family = "Murakami",
            role = c("aut", "cre"),
            email = "keach.murakami@gmail.com",
            comment = c(ORCID = "0000-0001-8150-9535"))
-Description: What the package does (one paragraph).
+Description: Things make me feel better.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
