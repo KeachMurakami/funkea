@@ -4,10 +4,10 @@
 inward_tick <-
   function(length = 2, unit = "mm"){
     list(
-      theme(axis.ticks.length = unit(-length, unit),
-            axis.ticks        = element_line(size = rel(.5)),
-            axis.text.x       = element_text(margin = unit(c(2*length, 0, 0, 0), units = unit)),
-            axis.text.y       = element_text(margin = unit(c(0, 2*length, 0, 0), units = unit)))
+      ggplot2::theme(axis.ticks.length = grid::unit(-length, unit),
+                     axis.ticks        = ggplot2::element_line(size = ggplot2::rel(.5)),
+                     axis.text.x       = ggplot2::element_text(margin = grid::unit(c(2*length, 0, 0, 0), units = unit)),
+                     axis.text.y       = ggplot2::element_text(margin = grid::unit(c(0, 2*length, 0, 0), units = unit)))
     )
   }
 
@@ -17,8 +17,8 @@ inward_tick <-
 legend_topright <-
   function(position = c(.95, .95)){
     list(
-      theme(legend.position      = position,
-            legend.justification = c(1, 1))
+      ggplot2::theme(legend.position      = position,
+                     legend.justification = c(1, 1))
     )
   }
 
@@ -28,8 +28,8 @@ legend_topright <-
 legend_topleft <-
   function(position = c(.05, .95)){
     list(
-      theme(legend.position      = position,
-            legend.justification = c(0, 1))
+      ggplot2::theme(legend.position      = position,
+                    legend.justification = c(0, 1))
     )
   }
 
@@ -39,8 +39,8 @@ legend_topleft <-
 legend_bottomright <-
   function(position = c(.95, .05)){
     list(
-      theme(legend.position      = position,
-            legend.justification = c(1, 0))
+      ggplot2::theme(legend.position      = position,
+                    legend.justification = c(1, 0))
     )
   }
 
@@ -50,8 +50,8 @@ legend_bottomright <-
 legend_bottomleft <-
   function(position = c(.05, .05)){
     list(
-      theme(legend.position      = position,
-            legend.justification = c(0, 0))
+      ggplot2::theme(legend.position      = position,
+                     legend.justification = c(0, 0))
     )
   }
 
@@ -60,16 +60,16 @@ legend_bottomleft <-
 #'
 #' @export
 transparent <-
-  theme(legend.background = element_blank(),
-        panel.background  = element_blank(),
-        plot.background   = element_blank(),
-        strip.background  = element_blank())
+  ggplot2::theme(legend.background = ggplot2::element_blank(),
+                 panel.background  = ggplot2::element_blank(),
+                 plot.background   = ggplot2::element_blank(),
+                 strip.background  = ggplot2::element_blank())
 
 #' Use Japanese font
 #'
 #' @export
 jpn <-
-  theme(text = element_text(family = "HiraKakuPro-W3"))
+  ggplot2::theme(text = ggplot2::element_text(family = "HiraKakuPro-W3"))
 
 #' ggplot theme
 #'
@@ -78,14 +78,14 @@ theme_funkea <-
   function(size = 11, tick_length = 2, use_japanese = TRUE){
     if(use_japanese){
       list(
-        theme_bw(base_size = size),
+        ggplot2::theme_bw(base_size = size),
         inward_tick(length = tick_length),
         transparent,
         jpn
       )
     } else {
       list(
-        theme_bw(base_size = size),
+        ggplot2::theme_bw(base_size = size),
         inward_tick(length = tick_length),
         transparent
       )
