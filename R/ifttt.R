@@ -5,10 +5,10 @@
 #' @export
 convert_ifttt_time <-
   function(chr){
-    stringr::str_split(chr, pattern = " ") %>%
-      map_chr(function(txt){
+    stringr::str_split(chr, pattern = " ") |>
+      purrr::map_chr(function(txt){
         date <- paste0(txt[3], "-", txt[1], "-", txt[2])
-        is_am <- str_detect(txt[5], "AM")
+        is_am <- stringr::str_detect(txt[5], "AM")
         hour <- as.numeric(stringr::str_sub(txt[5], 1, 2)) + dplyr::if_else(is_am, 0, 9)
         minute <- stringr::str_sub(txt[5], 4, 5)
 
