@@ -18,7 +18,7 @@ legend_topright <-
   function(position = c(.95, .95)){
     list(
       ggplot2::theme(legend.position      = position,
-                     ggplot2::legend.justification = c(1, 1))
+                     legend.justification = c(1, 1))
     )
   }
 
@@ -29,7 +29,7 @@ legend_topleft <-
   function(position = c(.05, .95)){
     list(
       ggplot2::theme(legend.position      = position,
-                     ggplot2::legend.justification = c(0, 1))
+                     legend.justification = c(0, 1))
     )
   }
 
@@ -40,7 +40,7 @@ legend_bottomright <-
   function(position = c(.95, .05)){
     list(
       ggplot2::theme(legend.position      = position,
-                     ggplot2::legend.justification = c(1, 0))
+                     legend.justification = c(1, 0))
     )
   }
 
@@ -51,7 +51,7 @@ legend_bottomleft <-
   function(position = c(.05, .05)){
     list(
       ggplot2::theme(legend.position      = position,
-                     ggplot2::legend.justification = c(0, 0))
+                     legend.justification = c(0, 0))
     )
   }
 
