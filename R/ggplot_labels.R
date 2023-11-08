@@ -19,18 +19,16 @@ see_unicode <-
         "delta",        "u2206",        "\u2206",
         "times",        "u00D7",        "\u00D7",
         "deg",          "u00B0",        "\u00B0"
-      ) %>%
-      tibble::rowid_to_column("ID") %>%
-      mutate(unicode = paste0(symbol, " = ", unicode),
-             col = (ID - 1) %/% nrow,
-             row = ID - col * nrow)
+      ) |>
+      tibble::rowid_to_column("ID") |>
+      dplyr::mutate(unicode = paste0(symbol, " = ", unicode),
+                    col = (ID - 1) %/% nrow,
+                    row = ID - col * nrow)
 
-
-
-    ggplot(to_show, aes(x = col, y = -row)) +
-      theme_void() +
-      geom_text(hjust = 0, aes(label = unicode)) +
-      xlim(c(-.5, max(to_show$col) + 1))
+    ggplot2::ggplot(to_show, ggplot2::aes(x = col, y = -row)) +
+      ggplot2::theme_void() +
+      ggplot2::geom_text(hjust = 0, ggplot2::aes(label = unicode)) +
+      ggplot2::xlim(c(-.5, max(to_show$col) + 1))
   }
 
 
