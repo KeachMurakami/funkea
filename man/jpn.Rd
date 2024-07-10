@@ -4,7 +4,9 @@
 \name{jpn}
 \alias{jpn}
 \title{Use Japanese font}
-\format{An object of class \code{theme} (inherits from \code{gg}) of length 1.}
+\format{
+An object of class \code{theme} (inherits from \code{gg}) of length 1.
+}
 \usage{
 jpn
 }

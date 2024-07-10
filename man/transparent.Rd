@@ -4,7 +4,9 @@
 \name{transparent}
 \alias{transparent}
 \title{Transparent backgrounds}
-\format{An object of class \code{theme} (inherits from \code{gg}) of length 4.}
+\format{
+An object of class \code{theme} (inherits from \code{gg}) of length 4.
+}
 \usage{
 transparent
 }

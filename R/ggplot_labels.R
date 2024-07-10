@@ -1,10 +1,11 @@
 #' Plot unicodes
 #'
+#' @importFrom rlang .data
 #' @export
 see_unicode <-
   function(nrow = 6){
 
-    to_show <-
+    vars_unicode <-
       tibble::tribble(
         ~ chr,          ~ unicode,      ~ symbol,
         "alpha",        "u03B1",        "\u03B1",
@@ -19,18 +20,20 @@ see_unicode <-
         "delta",        "u2206",        "\u2206",
         "times",        "u00D7",        "\u00D7",
         "deg",          "u00B0",        "\u00B0"
-      ) %>%
-      tibble::rowid_to_column("ID") %>%
-      mutate(unicode = paste0(symbol, " = ", unicode),
-             col = (ID - 1) %/% nrow,
-             row = ID - col * nrow)
+      ) |>
+      tibble::rowid_to_column("ID")
 
 
+    shown_unicodes <-
+      dplyr::mutate(vars_unicode,
+                    lab = paste0(.data$symbol, " = ", .data$unicode),
+                    col = (.data$ID - 1) %/% nrow,
+                    row = .data$ID - .data$col * nrow)
 
-    ggplot(to_show, aes(x = col, y = -row)) +
-      theme_void() +
-      geom_text(hjust = 0, aes(label = unicode)) +
-      xlim(c(-.5, max(to_show$col) + 1))
+    ggplot2::ggplot(shown_unicodes, ggplot2::aes(x = col, y = -row, label = .data$lab)) +
+      ggplot2::theme_void() +
+      ggplot2::geom_text(hjust = 0) +
+      ggplot2::xlim(c(-.5, max(shown_unicodes$col) + 1))
   }
 
 
