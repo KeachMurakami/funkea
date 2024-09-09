@@ -1,6 +1,6 @@
 Package: funkea
 Title: functions and utilities for me
-Version: 0.0.2.0000
+Version: 0.0.2.0001
 Authors@R: 
     person(given = "Keach",
            family = "Murakami",
