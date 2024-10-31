@@ -6,7 +6,7 @@
 \usage{
 read_cr(
   file,
-  n_max = 5000,
+  n_max = Inf,
   wide = TRUE,
   remove_quality_check = TRUE,
   remove_time_of_occurence = TRUE

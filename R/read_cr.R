@@ -2,7 +2,7 @@
 #'
 #' @export
 read_cr <-
-  function(file, n_max = 5000, wide = TRUE, remove_quality_check = TRUE, remove_time_of_occurence = TRUE){
+  function(file, n_max = Inf, wide = TRUE, remove_quality_check = TRUE, remove_time_of_occurence = TRUE){
     # read colnames
     colname <- colnames(readr::read_csv(file, col_types = readr::cols(), n_max = 1, skip = 1))
 
