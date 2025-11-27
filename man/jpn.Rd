@@ -5,7 +5,7 @@
 \alias{jpn}
 \title{Use Japanese font}
 \format{
-An object of class \code{theme} (inherits from \code{gg}) of length 1.
+An object of class \code{theme} (inherits from \code{ggplot2::theme}, \code{gg}, \code{S7_object}) of length 1.
 }
 \usage{
 jpn

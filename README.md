@@ -8,6 +8,17 @@
 <!-- badges: end -->
 
 ``` r
+library(tidyverse)
+#> ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+#> ✔ dplyr     1.1.4     ✔ readr     2.1.5
+#> ✔ forcats   1.0.0     ✔ stringr   1.5.1
+#> ✔ ggplot2   4.0.0     ✔ tibble    3.3.0
+#> ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+#> ✔ purrr     1.1.0     
+#> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+#> ✖ dplyr::filter() masks stats::filter()
+#> ✖ dplyr::lag()    masks stats::lag()
+#> ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 library(funkea)
 ```
 
@@ -15,8 +26,8 @@ library(funkea)
 
 ``` r
 p <-
-  mtcars %>%
-  mutate(am = if_else(am == 0, "オートマティック", "マニュアル")) %>%
+  mtcars |>
+  mutate(am = if_else(am == 0, "オートマティック", "マニュアル")) |>
   ggplot(aes(hp, mpg, col = cyl)) +
   theme_grey() +
   geom_point() +
@@ -39,12 +50,10 @@ p +
 
 ## ggplot label
 
-  - `gglabel`にラベルに頻用する単位をまとめる
-      - text引数で単位以外の部分を記述
-      - expression記法する場合は`~`スタート
-      - `see_unicode()`で主要なunicodeを確認
-
-<!-- end list -->
+- `gglabel`にラベルに頻用する単位をまとめる
+  - text引数で単位以外の部分を記述
+  - expression記法する場合は`~`スタート
+  - `see_unicode()`で主要なunicodeを確認
 
 ``` r
 see_unicode()
@@ -53,21 +62,20 @@ see_unicode()
 <img src="man/figures/README-labels-1.png" width="100%" />
 
 ``` r
-qplot(1:5) + theme_bw() +
+tibble(x = 1:5) |>
+  ggplot(aes(x, x)) +
+  geom_col() +
   labs(x = gglabel("\u2206 Temperature", type = "degC"),
        y = gglabel("PPFD", type = "muflux"),
        subtitle = gglabel(~CO[2], type = "muconc"))
-#> `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
 <img src="man/figures/README-labels-2.png" width="100%" />
 
 ## zero filling
 
-  - 整数部桁揃え
-      - 内部的には`str_pad`
-
-<!-- end list -->
+- 整数部桁揃え
+  - 内部的には`str_pad`
 
 ``` r
 x <- c(1, 20, 100, NA)
@@ -79,10 +87,8 @@ lead_zero(x, 3)
 #> [1] "001" "020" "100" NA
 ```
 
-  - 小数点以下揃え
-      - 内部的には`sprintf`
-
-<!-- end list -->
+- 小数点以下揃え
+  - 内部的には`sprintf`
 
 ``` r
 y <- c(0.1, 0.001, 0.09, NA)

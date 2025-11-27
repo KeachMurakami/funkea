@@ -16,11 +16,11 @@
     response <- httr::GET(url)
 
     # XMLの解析
-    doc <- xml2::read_xml(content(response, "text", encoding = "UTF-8"))
+    doc <- xml2::read_xml(httr::content(response, "text", encoding = "UTF-8"))
 
     # 緯度経度の取得
     lat <- xml2::xml_text(xml2::xml_find_first(doc, "//coordinate/lat"))
-    lng <- xml2::xml_text(xml2::xml_find_first(doc, "//coordinate/lng"))
+    lon <- xml2::xml_text(xml2::xml_find_first(doc, "//coordinate/lng"))
 
     # 実行時刻を更新
     last_execution <<- Sys.time()

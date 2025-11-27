@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 ```{r}
+library(tidyverse)
 library(funkea)
 ```
 
@@ -27,8 +28,8 @@ library(funkea)
 
 ```{r theme}
 p <-
-  mtcars %>%
-  mutate(am = if_else(am == 0, "オートマティック", "マニュアル")) %>%
+  mtcars |>
+  mutate(am = if_else(am == 0, "オートマティック", "マニュアル")) |>
   ggplot(aes(hp, mpg, col = cyl)) +
   theme_grey() +
   geom_point() +
@@ -51,7 +52,9 @@ p +
 
 ```{r labels}
 see_unicode()
-qplot(1:5) + theme_bw() +
+tibble(x = 1:5) |>
+  ggplot(aes(x, x)) +
+  geom_col() +
   labs(x = gglabel("\u2206 Temperature", type = "degC"),
        y = gglabel("PPFD", type = "muflux"),
        subtitle = gglabel(~CO[2], type = "muconc"))

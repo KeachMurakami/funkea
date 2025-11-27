@@ -5,9 +5,9 @@ inward_tick <-
   function(length = 2, unit = "mm"){
     list(
       ggplot2::theme(axis.ticks.length = grid::unit(-length, unit),
-                     axis.ticks        = ggplot2::element_line(size = ggplot2::rel(.5)),
-                     axis.text.x       = ggplot2::element_text(margin = grid::unit(c(2*length, 0, 0, 0), units = unit)),
-                     axis.text.y       = ggplot2::element_text(margin = grid::unit(c(0, 2*length, 0, 0), units = unit)))
+                     axis.ticks        = ggplot2::element_line(linewidth = ggplot2::rel(.5)),
+                     axis.text.x       = ggplot2::element_text(margin = ggplot2::margin(t = 2*length, r = 0, b = 0, l = 0, unit = unit)),
+                     axis.text.y       = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 2*length, b = 0, l = 0, unit = unit)))
     )
   }
 
@@ -17,8 +17,7 @@ inward_tick <-
 legend_topright <-
   function(position = c(.95, .95)){
     list(
-      ggplot2::theme(legend.position      = position,
-                     legend.justification = c(1, 1))
+      ggplot2::theme(legend.position = position, legend.justification = c(1, 1))
     )
   }
 
@@ -28,8 +27,7 @@ legend_topright <-
 legend_topleft <-
   function(position = c(.05, .95)){
     list(
-      ggplot2::theme(legend.position      = position,
-                    legend.justification = c(0, 1))
+      ggplot2::theme(legend.position = position, legend.justification = c(0, 1))
     )
   }
 
@@ -39,8 +37,7 @@ legend_topleft <-
 legend_bottomright <-
   function(position = c(.95, .05)){
     list(
-      ggplot2::theme(legend.position      = position,
-                    legend.justification = c(1, 0))
+      ggplot2::theme(legend.position = position, legend.justification = c(1, 0))
     )
   }
 
@@ -50,8 +47,7 @@ legend_bottomright <-
 legend_bottomleft <-
   function(position = c(.05, .05)){
     list(
-      ggplot2::theme(legend.position      = position,
-                     legend.justification = c(0, 0))
+      ggplot2::theme(legend.position = position, legend.justification = c(0, 0))
     )
   }
 
@@ -60,7 +56,7 @@ legend_bottomleft <-
 #'
 #' @export
 transparent <-
-  ggplot2::theme(legend.background = ggplot2::element_blank(),
+  ggplot2::theme(legend.background = ggplot2::element_rect(fill = NA, colour = NA),
                  panel.background  = ggplot2::element_blank(),
                  plot.background   = ggplot2::element_blank(),
                  strip.background  = ggplot2::element_blank())
